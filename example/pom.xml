@@ -1,0 +1,39 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dipert</groupId>
+  <artifactId>abcl-example-project</artifactId>
+  <version>1.0.0</version>
+
+  <properties>
+    <abcl.version>1.6.1</abcl.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.abcl</groupId>
+      <artifactId>abcl</artifactId>
+      <version>${abcl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.abcl</groupId>
+      <artifactId>abcl-contrib</artifactId>
+      <version>${abcl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.dipert</groupId>
+      <artifactId>abcl-maven-plugin</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.dipert</groupId>
+        <artifactId>abcl-maven-plugin</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
