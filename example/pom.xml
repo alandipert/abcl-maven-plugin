@@ -19,11 +19,6 @@
       <artifactId>abcl-contrib</artifactId>
       <version>${abcl.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.dipert</groupId>
-      <artifactId>abcl-maven-plugin</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <build>
