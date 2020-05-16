@@ -23,16 +23,23 @@ public class REPLMojo extends AbstractABCLMojo {
 
     File[] sourceDirectory = getSourceDirectories(SourceDirectory.TEST, SourceDirectory.COMPILE);
     List<String> compileClasspathElements = getRunWithClasspathElements();
-    String classpath = manifestClasspath(sourceDirectory, outputDirectory, compileClasspathElements);
+    String cp = getPath(sourceDirectory);
+    cp = cp + File.pathSeparator + outputDirectory.getPath() + File.pathSeparator;
+    for (Object classpathElement : compileClasspathElements) {
+      cp = cp + File.pathSeparator + classpathElement;
+    }
+    cp = cp.replaceAll("\\s", "\\ ");
+
     final String javaExecutable = getJavaExecutable();
 
     getLog().debug("Java executable used:  " + javaExecutable);
-    getLog().debug("ABCL manifest classpath: " + classpath);
+    getLog().debug("ABCL classpath: " + cp);
 
     CommandLine cl = new CommandLine(javaExecutable);
-    cl.addArgument("-jar");
-    File jar = createJar(classpath, mainClass);
-    cl.addArgument(jar.getAbsolutePath(), false);
+
+    cl.addArgument("-cp");
+    cl.addArgument(cp, false);
+    cl.addArgument(mainClass);
 
     getLog().debug("Command line: " + cl.toString());
 

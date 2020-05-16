@@ -108,12 +108,12 @@ public abstract class AbstractABCLMojo extends AbstractMojo {
     }
 
 
-    private String getPath(File[] sourceDirectory) {
+    protected String getPath(File[] sourceDirectory) {
         String cp = "";
         for (File directory : sourceDirectory) {
-            cp = cp + directory.toURI() + " ";
+            cp = cp + directory.getPath() + File.pathSeparator;
         }
-        return cp;
+        return cp.substring(0, cp.length() - 1);
     }
 
     protected String manifestClasspath(final File[] sourceDirectory, final File outputDirectory, final List<String> compileClasspathElements) {
